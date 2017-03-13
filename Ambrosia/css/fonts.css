@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'Dancing Script';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Dancing-Script-regular/Dancing-Script-regular.eot');
+  src: url('../fonts/Dancing-Script-regular/Dancing-Script-regular.eot?#iefix') format('embedded-opentype'),
+       local('Dancing Script Regular'),
+       local('Dancing-Script-regular'),
+       url('../fonts/Dancing-Script-regular/Dancing-Script-regular.woff2') format('woff2'),
+       url('../fonts/Dancing-Script-regular/Dancing-Script-regular.woff') format('woff'),
+       url('../fonts/Dancing-Script-regular/Dancing-Script-regular.ttf') format('truetype'),
+       url('../fonts/Dancing-Script-regular/Dancing-Script-regular.svg#DancingScript') format('svg');
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/Dancing-Script-700/Dancing-Script-700.eot');
+  src: url('../fonts/Dancing-Script-700/Dancing-Script-700.eot?#iefix') format('embedded-opentype'),
+       local('Dancing Script Bold'),
+       local('Dancing-Script-700'),
+       url('../fonts/Dancing-Script-700/Dancing-Script-700.woff2') format('woff2'),
+       url('../fonts/Dancing-Script-700/Dancing-Script-700.woff') format('woff'),
+       url('../fonts/Dancing-Script-700/Dancing-Script-700.ttf') format('truetype'),
+       url('../fonts/Dancing-Script-700/Dancing-Script-700.svg#DancingScript') format('svg');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Montserrat-regular/Montserrat-regular.eot');
+  src: url('../fonts/Montserrat-regular/Montserrat-regular.eot?#iefix') format('embedded-opentype'),
+       local('Montserrat Regular'),
+       local('Montserrat-regular'),
+       url('../fonts/Montserrat-regular/Montserrat-regular.woff2') format('woff2'),
+       url('../fonts/Montserrat-regular/Montserrat-regular.woff') format('woff'),
+       url('../fonts/Montserrat-regular/Montserrat-regular.ttf') format('truetype'),
+       url('../fonts/Montserrat-regular/Montserrat-regular.svg#Montserrat') format('svg');
+}
+

@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    padding: 0;
+	background-color: #ecf0f1;
+  
+}
+
+
+.nav_logo{
+    width: 200px;
+    margin: 10px;
+}
+
+.navbar-fixed{
+    height: 0px;
+}
+
+a, a:hover, a:visited{
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
+.feature_image_div{
+    height: 80vh; /* Remove this line after adding content to the div */
+
+}
+
+section{
+	padding-top: 100px ;
+}
+
+
+.gallery-container{
+	padding: 20px;
+}
+
+.gallery-img{
+	margin-bottom: 10px;
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">  
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+  	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+	
+
+	<title>Admin Panel</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+			display: block;			
+			background: url("back.png");
+			height: 100vh;
+			width: 100%;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: right;
+		}
+
+		.collection{
+			max-height: 300px;
+			overflow-y: auto;
+		}
+
+		.collection-header{
+			margin-left: 8px;
+		}
+
+		.material-icons{
+			color: #536DFE;
+		}
+
+		.last_name{			
+			border-bottom-color: #536DFE;
+			margin-top: 16px;
+		}
+
+		.last_name label{
+			color: #536DFE;
+		}
+
+		.btn_submit{
+			margin-left: 8px;
+			margin-bottom: 8px;
+			background-color: #536DFE;			
+		}
+
+		.btn_submit:hover{
+			background-color: #3D5AFE;	
+		}
+
+		.input-field label {
+			color: #536DFE;
+		}
+		.input-field input[type=text]{
+			border-bottom: 1px solid #536DFE;
+		}
+		/* label focus color */
+		.input-field input[type=text]:focus + label {
+			color: #536DFE;
+		}
+		/* label underline focus color */
+		.input-field input[type=text]:focus {
+			border-bottom: 1px solid #536DFE;
+			box-shadow: 0 1px 0 0 #000;
+		}		
+
+		.secondary-content{
+			cursor: pointer;
+		}
+
+		.input{
+			height: 100vh;
+			display: flex;
+			align-items: center;
+		}
+
+		form{
+			padding-top: 20px !important;
+		}
+
+		#list{
+			max-height: 300px;
+			overflow: scroll;
+		}
+		
+		
+	</style>
+</head>
+<body onload="readData()">
+
+	
+	<div class="input row">
+	    <form id="form" class="col s12 m12 l6 offset-l3 white z-depth-5" >
+
+			<div class="row">        
+				<div class="input-field col s12 indigo-accent3">
+					<input id="in" type="text" class="validate">
+					<label for="in">Commentry</label>
+				</div>	
+			</div>      
+
+			<a class="btn_submit waves-effect waves-light btn" onclick="writeData()">SUBMIT</a>
+
+			<div class="row">
+				<ul id="list" class="collection">
+					<li class="collection-header"><h4>Commentries</h4></li>		        
+				</ul>
+			</div>
+
+	    </form>
+	</div>
+
+	
+	
+  <script>
+	// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyAPdZPCLPQqU3zMkuC--Vqlsy-_JuUkKIc",
+		authDomain: "ambrosia-35d76.firebaseapp.com",
+		databaseURL: "https://ambrosia-35d76.firebaseio.com",
+		storageBucket: "ambrosia-35d76.appspot.com",
+		messagingSenderId: "1047014454213"
+	};
+	firebase.initializeApp(config);
+	var database = firebase.database();
+
+
+
+	database.ref("commentaries/").once('value').then(function(snapshot){
+		var main = snapshot.val();
+	});
+
+	
+
+	function writeData(){
+		var value = document.getElementById('in').value;
+		console.log(value);
+
+		var updateKey = database.ref("commentaries/").push().key;
+		var time = new Date();
+		var hour = time.getHours();
+		var min = time.getMinutes();
+
+		var am_pm = null;
+
+		if (hour < 12){
+			am_pm = "AM";
+		}
+		else{
+			am_pm = "PM";
+			if(hour>12)
+				hour -= 12;
+		}
+
+		if (min < 10){
+			var complete_time = hour + ":0" + min + " " + am_pm;
+		}
+		else{
+			var complete_time = hour + ":" + min + " " + am_pm;
+		}
+
+		console.log(complete_time)
+
+		database.ref("commentaries/" + updateKey).update({
+			comments: value,
+			time: complete_time
+		});
+
+		document.getElementById('form').reset();
+	}
+
+
+	
+	function readData() {
+
+		var comment_ref = database.ref('commentaries');	
+
+		database.ref("commentaries/").once('value').then(function(snapshot){
+			var main = snapshot.val();			
+		});
+
+		var ul = document.getElementById('list'); 
+
+		comment_ref.on('child_added', function(data){
+			var comm = data.val();		
+			ul.innerHTML += '<li id="' + data.key + '" class="collection-item"><div>' + comm.comments + '<span style="margin-left: 20px ">' + comm.time + '<a onclick="deleteRow(this)" class="secondary-content"><i class="small material-icons">delete</i></a></div></li>';
+		});
+		
+	}
+
+	function deleteRow(id){
+		var key = id.parentNode.parentNode.id;
+		console.log(key);
+		var ul = document.getElementById('list');
+		var li = document.getElementById(key);
+		var comment_ref = database.ref('commentaries');	
+		database.ref("commentaries/"+key).remove();
+		ul.removeChild(li);
+		comment_ref.on('child_changed', function(data){
+			
+			console.log("deleting");
+		});
+
+		comment_ref.on('child_removed', function(data){
+			ul.removeChild(li);
+			console.log("deleting");
+		});
+	}
+
+	</script>
+
+</body>
+</html>
