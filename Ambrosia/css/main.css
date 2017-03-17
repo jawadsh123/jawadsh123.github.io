@@ -191,25 +191,27 @@ a, a:hover, a:visited{
 .sponsors{
     width: auto;
     height: auto;
+    padding: 40px;
     /*display: flex;    
     justify-content: space-around;
     align-items: center;*/
 }
 
-.sponsors_list{/*
+.sponsors_list{
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;*/
-    padding: 3em;
+    justify-content: space-around;  
+    flex-wrap: wrap;
 }
 
-.sponsor_card{
-    margin: 20px;
+.sp_card_in{
+    margin-top: 10px;
+    max-height: 210px;
 }
 
 .contact{
     width: auto;
-    min-height: 500px;
+    margin: 0px;
+    padding: 20px;
     /*z-index: -1;*/
     /*display: flex;
     flex-wrap: wrap;
@@ -224,15 +226,15 @@ a, a:hover, a:visited{
 }
 
 .address_sub{
-    font-size: 0.8em;
-    max-width: 300px;
+    font-size: 1.2em;
+    /*max-width: 300px;*/
 }
 
 .map-card .card-content, .map-card{
     padding-left: 0px !important;
     padding-right: 0px !important;
     padding-top: 0px !important;
-    margin: 0px !important;
+    /*margin: 0px !important;*/
 }
 
 iframe{
@@ -240,11 +242,24 @@ iframe{
 }
 
 
-.social_container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+
+.contact_card{
+    min-width: 267px; 
+    max-width: 300px;
+}
+
+.soc_divider{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.soc_ele{
+    padding: 20px !important;
+    font-size: 1.2em;
+}
+
+.soc_ele span{
+    padding-left: 20px;
 }
 
 .social_icon{
