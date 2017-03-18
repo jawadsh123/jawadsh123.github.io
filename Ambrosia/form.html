@@ -3,8 +3,8 @@
 <head>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<link rel="icon" href="img/fav_icon.png">
+
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">  
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
@@ -128,16 +128,18 @@
 			<div class="row">
 				<ul id="list" class="collection">
 					<li class="collection-header"><h4>Commentries</h4></li>	
-					<div class="preloader-wrapper big active " id="loader">
-						<div class="spinner-layer spinner-blue-only">
-							<div class="circle-clipper left">
-								<div class="circle"></div>
-							</div>
-							<div class="gap-patch">
-								<div class="circle"></div>
-							</div>
-							<div class="circle-clipper right">
-								<div class="circle"></div>
+					<div class="row">
+						<div class="preloader-wrapper big active " id="loader">
+							<div class="spinner-layer spinner-blue-only">
+								<div class="circle-clipper left">
+									<div class="circle"></div>
+								</div>
+								<div class="gap-patch">
+									<div class="circle"></div>
+								</div>
+								<div class="circle-clipper right">
+									<div class="circle"></div>
+								</div>
 							</div>
 						</div>
 					</div>       			
@@ -179,22 +181,27 @@
 		var hour = time.getHours();
 		var min = time.getMinutes();
 
-		var am_pm = null;
+		var day = time.getDate();
+		var month = time.getMonth();
 
+		var am_pm = null;
 		if (hour < 12){
 			am_pm = "AM";
 		}
 		else{
 			am_pm = "PM";
-			if(hour>12)
+			if(hour>=12)
 				hour -= 12;
+		}
+		if (hour == 0){
+			hour += 12;
 		}
 
 		if (min < 10){
-			var complete_time = hour + ":0" + min + " " + am_pm;
+			var complete_time = hour + ":0" + min + " " + am_pm + " " + day + "/" + (month+1);
 		}
 		else{
-			var complete_time = hour + ":" + min + " " + am_pm;
+			var complete_time = hour + ":" + min + " " + am_pm + " " + day + "/" + (month+1);
 		}
 
 		console.log(complete_time)
