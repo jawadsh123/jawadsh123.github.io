@@ -86,7 +86,7 @@ a, a:hover, a:visited{
 
 .event_collapsible_body{
     max-height: 400px;
-    overflow: scroll;
+    overflow-y: auto;
     overflow-x: auto;
 }
 
