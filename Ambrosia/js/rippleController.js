@@ -7,6 +7,19 @@ $(function(argument) {
 
 	if (isMobile == true){
 		$(".comittee--card").removeClass("waves-effect");
+		$(".left_btn, .right_btn").removeClass("btn-large");
+		$(".left_btn, .right_btn").addClass("btn");
+		$('.carousel.carousel-slider').each(function() {
+var view = $(this);
+var firstImage = view.find('.carousel-item img').first();
+var imageHeight = firstImage[0].naturalHeight;
+if (imageHeight > 0) {
+view.css('height', imageHeight / firstImage[0].naturalWidth * view.width());
+}
+else {
+view.css('height', 400);
+}
+});
 	}
 
 })

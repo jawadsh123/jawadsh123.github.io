@@ -16,31 +16,17 @@ $(function() {
 
     $(".scrollspy").scrollSpy();
 
+    $('.carousel.carousel-slider').carousel({fullWidth: true, indicators: true});
 
 
-    // back to top fab
-    // var offset = $(".live_events").offset().top - 200;
-    // var displayFab = false
-    // $(window).scroll(function() {
-    	
-    // 	var curr_scroll = $(this).scrollTop();
-    	
-    // 	if (curr_scroll > offset){
-    // 		// console.log("hey");
-    // 		if (displayFab == false){
-    // 			$(".back_to_top").removeClass("scale-out");
-    // 			displayFab = true;
-    // 		}
-    // 	}
-    // 	else{
-    // 		if (displayFab == true){
-    // 			$(".back_to_top").addClass("scale-out");
-    // 			displayFab = false;
-    // 		}
-    // 	}
+    // carouse; logic
+    $(".right_btn").on("click", function (el) {
+       $(".carousel").carousel('next');
+    });
+    $(".left_btn").on("click", function (el) {
+       $(".carousel").carousel('prev');
+    });
 
-
-    // });
 
     var waypoints = $(".event_collapsible").waypoint({
         handler: function(direction) {
@@ -75,6 +61,9 @@ $(function() {
         $(".event_collapsible_header").click();
     })
 
+    // $("footer").footerReveal({shadowOpacity: 0.4});
+
+
     // //////////////////////////////////////////
 
     // scroll reveal animations
@@ -83,5 +72,7 @@ $(function() {
     sr.reveal(".section_header", {origin: 'top', duration: 1000});
     sr.reveal(".major-event", {duration: 1000});
     sr.reveal(".minor-event", {duration: 1000});
+    sr.reveal(".sponsor_card", {duration: 500});
+    sr.reveal(".contact_card", {duration: 1000});
 
 });

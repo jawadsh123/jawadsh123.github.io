@@ -183,10 +183,17 @@ a, a:hover, a:visited{
     min-height: 90vh;
 }
 
-.slider{
-    margin-top: 20px;
+
+.left_btn, .right_btn{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
+.carousel.carousel-slider{
+    height: 60vh;
+    margin-bottom: 20px;
+}
 
 .sponsors{
     width: auto;
@@ -212,6 +219,8 @@ a, a:hover, a:visited{
     width: auto;
     margin: 0px;
     padding: 20px;
+    padding-bottom: 40px;
+    min-height: 90vh;
     /*z-index: -1;*/
     /*display: flex;
     flex-wrap: wrap;
@@ -279,36 +288,20 @@ iframe{
     display: flex;
 }
 
-
-
 footer{
-    height: 100px;
-    padding: 10px;
-    background-color: #242424;
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    display: flex;
-    align-items: center;
+    background-color: rgb(20,20,20);
+    margin-bottom: 0px !important;
 }
 
-.footer_list{
-    margin: 50px;
+footer .dev{
+    padding: 5px;
 }
 
-.footer_img{
-    height: 24px;
-    float: left;
-    margin-right: 10px;
+footer .copyright{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
-
-.footer_text{
-    font-family: 'Roboto', sans-serif;
-    font-size: 17px;
-    float: left;
-    margin-right: 100px;
-}
-
-
 
 
 

@@ -39,7 +39,7 @@
 						<li><a class="nav_items" href="#landing_page">Home</a></li>
 						<li><a class="nav_items" href="#main_events">Major Events</a></li>
 						<li><a class="nav_items" href="#comm_event">Committee Events</a></li>
-						<li><a class="nav_items" href="gallery.html">Gallery</a></li>
+						<li><a class="nav_items" href="#gallery_sect">Gallery</a></li>
 						<li><a class="nav_items" href="#sponsor_sect">Sponsors</a></li>
 						<li><a class="nav_items" href="#contact_sect">Contact</a></li>
 					</ul>
@@ -57,7 +57,7 @@
 			<li><a href="#contact_sect">Contact</a></li>
 		</ul>
 
-		<section>
+		<section class="main_sect">
 			<main>
 
 				<div class="parallax-container feature_image_div scrollspy" id="landing_page">
@@ -364,6 +364,38 @@
 
 				</div> -->
 
+				<div class="row gallery blue-grey lighten-5 scrollspy" id="gallery_sect" >
+
+					<div class="row section_header">
+						<div class="card title_card transparent">
+							<div class="card-content">
+								<h3 class="center-align">A glimpse into the past!!</h3>
+								<p class="center-align sub_title">
+									What we did the last time around? Check out the gallery!
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="container">
+						<div class="carousel carousel-slider ">
+							<a class="carousel-item" href="#one!"><img src="img/ambrosia/1.jpg" class="responsive-img"></a>
+							<a class="carousel-item" href="#two!"><img src="img/ambrosia/2.jpg"></a>
+							<a class="carousel-item" href="#three!"><img src="img/ambrosia/3.jpg"></a>
+							<a class="carousel-item" href="#four!"><img src="img/ambrosia/4.jpg"></a>
+
+							<a class="btn-floating btn-large yellow darken-3 waves-light waves-effect left left_btn"><i class="material-icons">keyboard_arrow_left
+</i></a>
+							<a class="btn-floating btn-large yellow darken-3 waves-light  waves-effect right right_btn"><i class="material-icons">keyboard_arrow_right</i></a>
+						</div>	
+					</div>
+
+					<div class="row center-align">
+						<a class="waves-effect waves-light btn btn-large red accent-3 white-text" href="gallery.html" target="_blank"><i class="material-icons left">aspect_ratio</i>View Complete Gallery!</a>
+					</div>
+					
+				</div>
+
 
 				<!-- Sponsors Section -->
 
@@ -438,7 +470,7 @@
 
 				<div class="contact blue-grey lighten-5 row scrollspy" id="contact_sect">
 
-					<div class="row">
+					<div class="row section_header">
 						
 						<div class="card title_card transparent">
 							<div class="card-content">
@@ -542,9 +574,22 @@
 		</section>
 
 
-		<!-- <footer>
-			
-	</footer> -->
+		 <footer class="page-footer red darken-3">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <div class="white-text">Website developed and maintained by --</div>
+                <div class="grey-text text-lighten-4 flow-text"><a href="https://www.linkedin.com/in/jawad-shaikh-149077122/">Jawad Shaikh</a> & <a href="https://www.linkedin.com/in/da9ish/">Danish Shah</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 Ambrosia. All Rights Reserved.
+            <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+            </div>
+          </div>
+        </footer>
 
 
 	<!-- Utility modals and stuff -->
@@ -579,11 +624,8 @@
 		<!-- Including Scripts -->
 		<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
 		<script type="text/javascript" src="js/materialize.js"></script>
+
 		<!-- <script type="text/javascript" src="js/masonry.js"></script> -->
-		<script type="text/javascript" src="js/main.js"></script>
-		<script type="text/javascript" src="js/modal.js"></script>
-
-
 		<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
 		<script>
 			// Initialize Firebase
@@ -605,6 +647,13 @@
 
 		<!-- script for back to top -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+
+		<!-- script for footer -->
+		<script src="js/footer-reveal.min.js"></script>
+
+		<!-- main scripts -->
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/modal.js"></script>
 
 	</body>
 
