@@ -22,10 +22,14 @@ blockquote{
 
 
 .modal{
-    height: auto !important;
+    /*height: auto !important;*/
     overflow: auto;
+    max-height: 90vh;
 }
 
+.modal .card-image{
+    
+}
 
 .btn{
     text-transform: none;
