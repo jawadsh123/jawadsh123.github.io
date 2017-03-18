@@ -101,6 +101,11 @@
 			bottom: 0;
 			margin: auto;
 		}
+
+		#no_comment{
+			margin-left: 16px;
+			display: none;
+		}
 		
 		
 	</style>
@@ -122,20 +127,23 @@
 
 			<div class="row">
 				<ul id="list" class="collection">
-					<li class="collection-header"><h4>Commentries</h4></li>		
+					<li class="collection-header"><h4>Commentries</h4></li>	
 					<div class="preloader-wrapper big active " id="loader">
-					    <div class="spinner-layer spinner-blue-only">
-					      <div class="circle-clipper left">
-					        <div class="circle"></div>
-					      </div><div class="gap-patch">
-					        <div class="circle"></div>
-					      </div><div class="circle-clipper right">
-					        <div class="circle"></div>
-					      </div>
-					    </div>
-				  </div>        
+						<div class="spinner-layer spinner-blue-only">
+							<div class="circle-clipper left">
+								<div class="circle"></div>
+							</div>
+							<div class="gap-patch">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+						</div>
+					</div>       			
+					<p id="no_comment" >No Comments.</p>					 
 				</ul>
-			</div>
+			</div>	
 
 	    </form>
 	</div>
@@ -191,12 +199,21 @@
 
 		console.log(complete_time)
 
+
+		var comment_ref = database.ref('commentaries');	
+
 		database.ref("commentaries/" + updateKey).update({
 			comments: value,
 			time: complete_time
 		});
 
+		comment_ref.on('child_added', function(data){
+			no_comment.style.display = "none";	
+		});
+
 		document.getElementById('form').reset();
+
+
 	}
 
 
@@ -204,23 +221,31 @@
 	function readData() {
 
 		var comment_ref = database.ref('commentaries');	
-
+		var no_comment = document.getElementById('no_comment');
 		database.ref("commentaries/").once('value').then(function(snapshot){
-			var main = snapshot.val();			
+			var	main = snapshot.val();
+			if (main == null){
+				loader.style.display = "none";
+				no_comment.style.display = "block";
+			}	
 		});
 
 		var ul = document.getElementById('list'); 
-		var loader = document.getElementById('loader');
-		comment_ref.on('child_added', function(data){
-			loader.style.display = "none";			
-			var comm = data.val();		
+		var loader = document.getElementById('loader');	
+			
+		comment_ref.on('child_added', function(data){	
+			loader.style.display = "none";	
+			no_comment.style.display = "none";	
+			var comm = data.val();				
 			ul.innerHTML += '<li id="' + data.key + '" class="collection-item"><div>' + comm.comments + '<span style="margin-left: 20px ">' + comm.time + '<a onclick="deleteRow(this)" class="secondary-content"><i class="small material-icons">delete</i></a></div></li>';
 		});
+	
 		
 	}
 
 	function deleteRow(id){
-		var key = id.parentNode.parentNode.id;
+
+		var key = id.parentNode.parentNode.parentNode.id;
 		console.log(key);
 		var ul = document.getElementById('list');
 		var li = document.getElementById(key);
@@ -235,6 +260,16 @@
 		comment_ref.on('child_removed', function(data){
 			ul.removeChild(li);
 			console.log("deleting");
+		});
+
+		var no_comment = document.getElementById('no_comment');
+		database.ref("commentaries/").once('value').then(function(snapshot){
+			var	main = snapshot.val();
+			console.log(main);
+			if (main == null){
+				loader.style.display = "none";
+				no_comment.style.display = "block";
+			}	
 		});
 	}
 
