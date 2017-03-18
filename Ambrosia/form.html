@@ -29,7 +29,6 @@
 
 		.collection{
 			max-height: 300px;
-			overflow-y: auto;
 		}
 
 		.collection-header{
@@ -91,7 +90,16 @@
 
 		#list{
 			max-height: 300px;
-			overflow: scroll;
+			overflow-y: auto;
+		}
+
+		#loader {
+			position: absolute;
+			top :0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
 		}
 		
 		
@@ -114,7 +122,18 @@
 
 			<div class="row">
 				<ul id="list" class="collection">
-					<li class="collection-header"><h4>Commentries</h4></li>		        
+					<li class="collection-header"><h4>Commentries</h4></li>		
+					<div class="preloader-wrapper big active " id="loader">
+					    <div class="spinner-layer spinner-blue-only">
+					      <div class="circle-clipper left">
+					        <div class="circle"></div>
+					      </div><div class="gap-patch">
+					        <div class="circle"></div>
+					      </div><div class="circle-clipper right">
+					        <div class="circle"></div>
+					      </div>
+					    </div>
+				  </div>        
 				</ul>
 			</div>
 
@@ -191,8 +210,9 @@
 		});
 
 		var ul = document.getElementById('list'); 
-
+		var loader = document.getElementById('loader');
 		comment_ref.on('child_added', function(data){
+			loader.style.display = "none";			
 			var comm = data.val();		
 			ul.innerHTML += '<li id="' + data.key + '" class="collection-item"><div>' + comm.comments + '<span style="margin-left: 20px ">' + comm.time + '<a onclick="deleteRow(this)" class="secondary-content"><i class="small material-icons">delete</i></a></div></li>';
 		});
