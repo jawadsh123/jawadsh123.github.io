@@ -472,7 +472,10 @@ footer .copyright{
     max-width: 978px;
 }  
 
-
+.dev_link:hover{    
+    animation-duration: 1s;
+    border-bottom: 1px solid #fafafa;
+}
 
 
 
